@@ -182,3 +182,23 @@
     border-right-color: var(--border);
   }
 }
+
+.contenedor-formulario {
+  max-width: 420px;
+  margin: 80px auto;
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.contenedor-formulario form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contenedor-formulario input,
+.contenedor-formulario button {
+  padding: 12px;
+  font-size: 16px;
+}
