@@ -3,31 +3,97 @@ import { useState } from 'react';
 import Login from './pages/Login.jsx';
 import Registro from './pages/Registro.jsx';
 import Bienvenida from './pages/Bienvenida.jsx';
+import Admin from './pages/Admin.jsx';
+import EditarUsuario from './pages/EditarUsuario.jsx';
 
 import './App.css';
 
+
 function App() {
-  // Pantalla que se está mostrando actualmente
-  const [pantalla, setPantalla] = useState('login');
 
-  // Aquí guardaremos los datos del usuario que inició sesión
-  const [usuario, setUsuario] = useState(null);
+  const [pantalla, setPantalla] =
+    useState('login');
 
-  // =========================
-  // PANTALLA DE REGISTRO
-  // =========================
-  if (pantalla === 'registro') {
+  const [usuario, setUsuario] =
+    useState(null);
+
+  const [
+    idUsuarioEditar,
+    setIdUsuarioEditar
+  ] = useState(null);
+
+
+  // ========================================
+  // REGISTRO
+  // ========================================
+
+  if (
+    pantalla === 'registro'
+  ) {
+
     return (
       <Registro
         cambiarPantalla={setPantalla}
       />
     );
+
   }
 
-  // =========================
-  // PANTALLA DE BIENVENIDA
-  // =========================
-  if (pantalla === 'bienvenida') {
+
+  // ========================================
+  // PANEL ADMINISTRADOR / SUPERADMIN
+  // ========================================
+
+  if (
+    pantalla === 'admin'
+  ) {
+
+    return (
+      <Admin
+        usuario={usuario}
+        cambiarPantalla={setPantalla}
+        setUsuario={setUsuario}
+        setIdUsuarioEditar={
+          setIdUsuarioEditar
+        }
+      />
+    );
+
+  }
+
+
+  // ========================================
+  // EDITAR USUARIO
+  // ========================================
+
+  if (
+    pantalla === 'editarUsuario'
+  ) {
+
+    return (
+      <EditarUsuario
+        idUsuario={idUsuarioEditar}
+
+        // Usuario que inició sesión
+        usuarioSesion={usuario}
+
+        cambiarPantalla={
+          setPantalla
+        }
+      />
+    );
+
+  }
+
+
+  // ========================================
+  // USUARIO OPERATIVO
+  // ========================================
+
+  if (
+    pantalla === 'bienvenida'
+  ) {
+
     return (
       <Bienvenida
         usuario={usuario}
@@ -35,17 +101,22 @@ function App() {
         setUsuario={setUsuario}
       />
     );
+
   }
 
-  // =========================
-  // PANTALLA DE LOGIN
-  // =========================
+
+  // ========================================
+  // LOGIN
+  // ========================================
+
   return (
     <Login
       cambiarPantalla={setPantalla}
       setUsuario={setUsuario}
     />
   );
+
 }
+
 
 export default App;
