@@ -2,15 +2,20 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-import {
+/*import {
   getConnection
 } from './config/sqlserver.js';
+*/
+
+import {
+  getConnection
+} from './config/postgresql.js';
 
 import authRoutes
   from './routes/authRoutes.js';
 
 import usersRoutes
-  from './routes/usersRoutes.js';
+  from './routes/usersRoutesPostgre.js';
 
 
 // ========================================
@@ -80,6 +85,11 @@ app.use(
   authRoutes
 );
 
+app.use(
+  '/api/postgresql',
+  authRoutes
+);
+
 
 // ========================================
 // RUTAS DE USUARIOS
@@ -96,6 +106,11 @@ app.use(
 app.use(
   '/api/sqlserver/users',
   usersRoutes
+);
+
+app.use(
+  '/api/postgresql/users',
+  usersRoutesPostgre
 );
 
 
@@ -125,6 +140,7 @@ const iniciarServidor = async () => {
 
     // Comprobamos primero la conexión
     // con SQL Server.
+    // con PostgreSql
     await getConnection();
 
 
