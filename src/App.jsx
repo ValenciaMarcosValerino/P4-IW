@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import Login from './pages/login.jsx';
 import Registro from './pages/registro.jsx';
-import Bienvenida from './pages/Bienvenida.jsx';
+import Bienvenida from './pages/bienvenida.jsx';
 import Admin from './pages/Admin.jsx';
 import EditarUsuario from './pages/EditarUsuario.jsx';
 
