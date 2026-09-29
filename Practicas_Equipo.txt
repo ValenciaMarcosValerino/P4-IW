@@ -1,0 +1,12 @@
+Práctica 1
+https://github.com/ValenciaMarcosValerino/practica1.git
+
+Práctica 2
+https://github.com/peraltaordonezjesus-pixel/Practica2_IngenieriaWeb.git
+
+Práctica 3
+https://github.com/ValenciaMarcosValerino/practica3.git
+
+Práctica 4
+https://github.com/ValenciaMarcosValerino/P4-IW.git
+Link de la aplicación: https://practica4-neon.vercel.app/
