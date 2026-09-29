@@ -5,6 +5,9 @@ import Registro from './pages/registro.jsx';
 import Bienvenida from './pages/bienvenida.jsx';
 import Admin from './pages/Admin.jsx';
 import EditarUsuario from './pages/EditarUsuario.jsx';
+/**
+ * sube
+ */
 
 import './App.css';
 

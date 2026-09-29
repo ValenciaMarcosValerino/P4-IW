@@ -1,14 +1,6 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
-/*
-import {
-  buscarUsuarioPorCorreo,
-  buscarUsuarioPorCredenciales,
-  crearUsuario
-} from '../models/usersSQLserver.js';
-*/
-
 import {
   buscarUsuarioPorCorreo,
   buscarUsuarioPorCredenciales,

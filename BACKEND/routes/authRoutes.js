@@ -31,7 +31,7 @@ router.post(
 // LOGIN
 //
 // Ruta final:
-// POST /api/sqlserver/login
+// POST /api/postrgresql/login
 // ========================================
 
 router.post(

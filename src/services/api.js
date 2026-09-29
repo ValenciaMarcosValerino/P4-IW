@@ -1,6 +1,6 @@
-const API_URL = 'http://localhost:5000';
-
-
+const API_URL = import.meta.env.DEV
+  ? 'http://localhost:5000'
+  : '';
 // ========================================
 // OBTENER TOKEN GUARDADO
 // ========================================
@@ -22,7 +22,8 @@ export const loginUsuario = async (
   try {
 
     const respuesta = await fetch(
-      `${API_URL}/api/sqlserver/login`,
+      `${API_URL}/api/postgresql/login`,
+      /**`${API_URL}/api/sqlserver/login`, */
       {
         method: 'POST',
 
@@ -96,7 +97,8 @@ export const registrarUsuario = async (
   try {
 
     const respuesta = await fetch(
-      `${API_URL}/api/sqlserver/users`,
+      `${API_URL}/api/postgresql/users`,
+      /**`${API_URL}/api/sqlserver/users`, */
       {
         method: 'POST',
 
@@ -151,7 +153,8 @@ export const obtenerUsuarios = async () => {
 
 
     const respuesta = await fetch(
-      `${API_URL}/api/sqlserver/users`,
+      `${API_URL}/api/postgresql/users`,      
+      /**`${API_URL}/api/sqlserver/users`, */
       {
         method: 'GET',
 
@@ -205,7 +208,8 @@ export const obtenerUsuarioPorId =
 
 
       const respuesta = await fetch(
-        `${API_URL}/api/sqlserver/users/${id}`,
+        `${API_URL}/api/postgresql/users/${id}`,        
+/**        `${API_URL}/api/sqlserver/users/${id}`, */
         {
           method: 'GET',
 
@@ -261,7 +265,8 @@ export const modificarUsuario = async (
 
 
     const respuesta = await fetch(
-      `${API_URL}/api/sqlserver/users/${id}`,
+      `${API_URL}/api/postgresql/users/${id}`,
+      /**`${API_URL}/api/sqlserver/users/${id}`, */
       {
         method: 'PUT',
 
@@ -323,7 +328,8 @@ export const eliminarUsuario = async (
 
 
     const respuesta = await fetch(
-      `${API_URL}/api/sqlserver/users/${id}`,
+      `${API_URL}/api/postgresql/users/${id}`,
+      /**`${API_URL}/api/sqlserver/users/${id}`, */
       {
         method: 'DELETE',
 
@@ -379,7 +385,8 @@ export const cambiarEstadoUsuario =
 
 
       const respuesta = await fetch(
-        `${API_URL}/api/sqlserver/users/${id}/estado`,
+        `${API_URL}/api/postgresql/users/${id}/estado`,
+        /**`${API_URL}/api/sqlserver/users/${id}/estado`, */
         {
           method: 'PUT',
 

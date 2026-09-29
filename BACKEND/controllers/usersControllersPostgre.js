@@ -138,6 +138,7 @@ export const consultarUsuarioPorId =
 
       if (
         !solicitanteEsAdministrador &&
+        !solicitanteEsSuperadmin &&
         !esCuentaPropia
       ) {
 
@@ -309,6 +310,7 @@ export const modificarUsuario =
 
       if (
         !solicitanteEsAdministrador &&
+        !solicitanteEsSuperadmin &&
         !esCuentaPropia
       ) {
 
@@ -586,10 +588,7 @@ export const cambiarEstadoUsuario =
       // ========================================
 
       if (
-        activo !== true &&
-        activo !== false &&
-        activo !== 1 &&
-        activo !== 0
+        typeof activo !== 'boolean'
       ) {
 
         return res.status(400).json({
@@ -598,13 +597,6 @@ export const cambiarEstadoUsuario =
         });
 
       }
-
-
-      const nuevoEstado =
-        activo === true ||
-        activo === 1
-          ? 1
-          : 0;
 
 
       // ========================================
@@ -675,7 +667,7 @@ export const cambiarEstadoUsuario =
 
       await actualizarEstadoUsuario(
         id,
-        nuevoEstado
+        activo
       );
 
 
@@ -683,7 +675,7 @@ export const cambiarEstadoUsuario =
       // RESPUESTA
       // ========================================
 
-      if (nuevoEstado === 1) {
+      if (activo === true) {
 
         return res.status(200).json({
           mensaje:

@@ -42,11 +42,27 @@ const PORT =
 // Permitir conexión desde React
 app.use(
   cors({
-    origin: 'http://localhost:5173',
+    origin: [
+      'http://localhost:5173',
+      'https://practica4-neon.vercel.app'
+    ],
+
+    methods: [
+      'GET',
+      'POST',
+      'PUT',
+      'DELETE',
+      'OPTIONS'
+    ],
+
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization'
+    ],
+
     credentials: true
   })
 );
-
 
 // Permitir recibir JSON
 app.use(
@@ -80,10 +96,12 @@ app.get(
 // POST /api/sqlserver/users
 // ========================================
 
-app.use(
+/**
+ * app.use(
   '/api/sqlserver',
   authRoutes
 );
+ */
 
 app.use(
   '/api/postgresql',
@@ -103,14 +121,16 @@ app.use(
 // DELETE /api/sqlserver/users/:id
 // ========================================
 
-app.use(
+/**
+ * app.use(
   '/api/sqlserver/users',
   usersRoutes
 );
+ */
 
 app.use(
   '/api/postgresql/users',
-  usersRoutesPostgre
+  usersRoutes
 );
 
 
@@ -135,40 +155,32 @@ app.use(
 // ========================================
 
 const iniciarServidor = async () => {
-
   try {
+    await getConnection.query('SELECT 1');
 
-    // Comprobamos primero la conexión
-    // con SQL Server.
-    // con PostgreSql
-    await getConnection();
-
+    console.log(
+      'Conexión con PostgreSQL exitosa'
+    );
 
     app.listen(
       PORT,
       () => {
-
         console.log(
           `Servidor backend corriendo en http://localhost:${PORT}`
         );
-
       }
     );
-
-
   } catch (error) {
-
     console.error(
       'No se pudo iniciar el servidor:',
       error
     );
-
     process.exit(1);
-
   }
-
 };
 
+if (process.env.NODE_ENV !== 'production') {
+  iniciarServidor();
+}
 
-iniciarServidor();
-//en este index ya tenemos 2 endpoints uno que es el GET y otro que es el POST
+export default app;
